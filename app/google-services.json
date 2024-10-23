@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "966195038471",
+    "project_id": "app-bolo-fa",
+    "storage_bucket": "app-bolo-fa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:966195038471:android:b6f4aced45d002f0849da2",
+        "android_client_info": {
+          "package_name": "com.example.bolo_fa"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAPUFusB2GJlWdUHeOrg1_qNRno1-l03PU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
