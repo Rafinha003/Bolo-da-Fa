@@ -21,7 +21,26 @@
         android:fontFamily="sans-serif-medium"
         android:layout_marginBottom="24dp" />
 
-    <!-- Campo de E-mail em CardView para estilo -->
+    <!-- Campo de Nome em CardView -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardElevation="4dp"
+        app:cardCornerRadius="8dp"
+        android:layout_marginBottom="16dp">
+
+        <EditText
+            android:id="@+id/et_nome_cadastro"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nome"
+            android:inputType="textPersonName"
+            android:textColorHint="#9E9E9E"
+            android:textColor="#D81B60"
+            android:padding="16dp" />
+    </androidx.cardview.widget.CardView>
+
+    <!-- Campo de E-mail em CardView -->
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -38,7 +57,6 @@
             android:textColorHint="#9E9E9E"
             android:textColor="#D81B60"
             android:padding="16dp" />
-
     </androidx.cardview.widget.CardView>
 
     <!-- Campo de Senha em CardView -->
@@ -58,7 +76,6 @@
             android:textColorHint="#9E9E9E"
             android:textColor="#D81B60"
             android:padding="16dp" />
-
     </androidx.cardview.widget.CardView>
 
     <!-- Campo Confirmar Senha em CardView -->
@@ -78,7 +95,6 @@
             android:textColorHint="#9E9E9E"
             android:textColor="#D81B60"
             android:padding="16dp" />
-
     </androidx.cardview.widget.CardView>
 
     <!-- Botão de Cadastro -->
