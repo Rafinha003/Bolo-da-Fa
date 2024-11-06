@@ -1,6 +1,8 @@
 package com.example.bolo_fa
 
 import Controller.AuthenticationController
+import Controller.NomeDataCadastroController
+import Model.NomeDataCadastro
 import android.content.Intent
 import android.os.Bundle
 import android.util.Patterns
@@ -12,6 +14,8 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.bolo_fa.databinding.ActivityMainBinding
 import com.example.bolo_fa.databinding.ActivityTelaCadastroBinding
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 
 class TelaCadastro : AppCompatActivity() {
 
@@ -30,12 +34,12 @@ class TelaCadastro : AppCompatActivity() {
         }
 
         binding.btnCadastrarUsuario.setOnClickListener{
-            val nome = binding.etNomeCadastro.text.toString()
+            val nomeCadastrado = binding.etNomeCadastro.text.toString()
             val email = binding.etEmailCadastro.text.toString()
             val senha = binding.etSenhaCadastro.text.toString()
             val confirmarSenha = binding.etConfirmarSenha.text.toString()
 
-            if(nome.isEmpty() || email.isEmpty() || senha.isEmpty() || confirmarSenha.isEmpty()){
+            if(nomeCadastrado.isEmpty() || email.isEmpty() || senha.isEmpty() || confirmarSenha.isEmpty()){
                 Toast.makeText(this, "Existem campos que ainda não foram preenchido", Toast.LENGTH_SHORT).show()
                 return@setOnClickListener;
             }
@@ -50,6 +54,19 @@ class TelaCadastro : AppCompatActivity() {
                 return@setOnClickListener;
             }
 
+            val nomeCadastro = NomeDataCadastro().apply {
+                nome =  binding.etNomeCadastro.text.toString()
+                data = DateTimeFormatter.ofPattern("dd/MM/yyyy").format(LocalDate.now())
+            }
+
+            val nomeCadastroController = NomeDataCadastroController()
+            nomeCadastroController.salvarNomeDataCadastro(nomeCadastro){sucesso, erro ->
+                if(sucesso){
+                    Toast.makeText(this, "Nome gravado com sucesso", Toast.LENGTH_SHORT)
+                }else{
+                    Toast.makeText(this, "Nome gravado com erro", Toast.LENGTH_SHORT)
+                }
+            }
 
             controller = AuthenticationController()
 

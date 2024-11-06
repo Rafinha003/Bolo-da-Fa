@@ -10,7 +10,7 @@
     android:background="#FFE6E6"
     android:gravity="center">
 
-    <!-- Título da Tela de Cadastro -->
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
