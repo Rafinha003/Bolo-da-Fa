@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:padding="8dp"
+    android:background="#FFFFFF"
+    android:layout_marginBottom="8dp"
+    android:elevation="2dp">
+
+<TextView
+android:id="@+id/nomeOpcaoCardapio"
+android:layout_width="0dp"
+android:layout_height="wrap_content"
+android:layout_weight="0.8"
+android:textSize="20sp"
+android:textColor="#333333"
+android:ellipsize="end"
+android:maxLines="1"
+android:text="Nome do Bolo"
+android:paddingEnd="16dp"
+android:fontFamily="sans-serif-medium" />
+
+<ImageButton
+android:id="@+id/btnExcluir"
+android:src="@drawable/baseline_remove_red_eye_24"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:contentDescription="Excluir"
+android:background="?android:attr/selectableItemBackground"
+android:padding="8dp" />
+    </LinearLayout>

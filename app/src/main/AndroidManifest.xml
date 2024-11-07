@@ -15,6 +15,12 @@
         android:theme="@style/Theme.Bolo_fa"
         tools:targetApi="31">
         <activity
+            android:name=".CardapioLista"
+            android:exported="false" />
+        <activity
+            android:name=".ItemCardapio"
+            android:exported="false" />
+        <activity
             android:name=".EsqueceuSenha"
             android:exported="false" />
         <activity

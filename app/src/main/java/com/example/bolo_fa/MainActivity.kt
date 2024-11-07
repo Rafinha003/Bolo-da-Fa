@@ -32,6 +32,8 @@ class MainActivity : AppCompatActivity() {
             controller.login(email, senha){sucesso, erro ->
                 if(sucesso){
                     Toast.makeText(this, "O usuário autenticado com sucesso", Toast.LENGTH_SHORT).show()
+                    val intent = Intent(this, CardapioLista::class.java )
+                    startActivity(intent)
                 }else{
                     Toast.makeText(this, "Usuário não existe", Toast.LENGTH_SHORT).show()
                 }
