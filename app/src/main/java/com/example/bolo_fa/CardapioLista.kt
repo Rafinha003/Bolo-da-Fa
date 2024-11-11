@@ -1,60 +1,92 @@
 package com.example.bolo_fa
 
 import Controller.BoloController
-import Controller.CardapioAdapter
+import Controller.BoloAdapter
+import Controller.DoceFestaAdapter
+import Controller.DoceFestaController
 import Model.Cardapio
+import android.content.Intent
 import android.os.Bundle
-import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.bolo_fa.databinding.ActivityCardapioListaBinding
-import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ListenerRegistration
 
 class CardapioLista : AppCompatActivity() {
 
     private lateinit var binding: ActivityCardapioListaBinding
-    private lateinit var adapter: CardapioAdapter
+    private lateinit var adapter: BoloAdapter
+    private lateinit var adapterDoce: DoceFestaAdapter
     private var list = mutableListOf<Cardapio>()
-    private var listener: ListenerRegistration? = null
+    private var listDoce = mutableListOf<Cardapio>()
+    private var boloListener: ListenerRegistration? = null
+    private var doceListener: ListenerRegistration? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCardapioListaBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        adapter = CardapioAdapter(list)
+        adapter = BoloAdapter(list)
+        adapterDoce = DoceFestaAdapter(listDoce)
+
         binding.rvTarefas.layoutManager = LinearLayoutManager(this)
         binding.rvTarefas.adapter = adapter
 
-        setupFirestoreListener()
+        binding.doceDeFesta.layoutManager = LinearLayoutManager(this)
+        binding.doceDeFesta.adapter = adapterDoce
+
+        binding.sair.setOnClickListener{
+            val it = Intent(this, MainActivity::class.java)
+            startActivity(it)
+        }
+
+        carregarTodosOsBolos()
+        carregarTodosOsDocesFesta()
+
     }
 
-    private fun setupFirestoreListener() {
+    private fun carregarTodosOsBolos() {
         val controllerBolo = BoloController()
 
-        listener = controllerBolo.listarTodosOsBolos().addSnapshotListener{ querySnapshot, error ->
+        boloListener = controllerBolo.listarTodosOsBolos().addSnapshotListener { querySnapshot, error ->
             if (error != null) {
                 return@addSnapshotListener
             }
 
             querySnapshot?.let {
-                val listaBolo = it.documents.map {
-                    document ->
+                val listaBolo = it.documents.map { document ->
                     Cardapio(
                         document.getString("nome")
                     )
                 }
-                adapter.atualizarLista(listaBolo)
+                adapter.atualizarListaBolo(listaBolo)
+            }
+        }
+    }
+
+    private fun carregarTodosOsDocesFesta() {
+        val controllerDoce = DoceFestaController()
+
+        doceListener = controllerDoce.listarTodosOsDocesFesta().addSnapshotListener { querySnapshot, error ->
+            if (error != null) {
+                return@addSnapshotListener
+            }
+
+            querySnapshot?.let {
+                val listaDoce = it.documents.map { document ->
+                    Cardapio(
+                        document.getString("nome")
+                    )
+                }
+                adapterDoce.atualizarListaDoce(listaDoce)
             }
         }
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        listener?.remove() // Remove o listener quando a activity for destruída para evitar vazamento de memória
+        boloListener?.remove()
+        doceListener?.remove()
     }
 }

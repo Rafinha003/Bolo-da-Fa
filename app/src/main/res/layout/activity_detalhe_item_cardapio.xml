@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:padding="16dp"
+    android:weightSum="1">
+
+  <ImageView
+      android:id="@+id/sair"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_alignParentTop="true"
+      android:layout_alignParentEnd="true"
+      android:src="@drawable/baseline_exit_to_app_24" />
+
+  <!-- Imagem do Bolo -->
+  <ImageView
+      android:id="@+id/imageViewBolo"
+      android:layout_width="120dp"
+      android:layout_height="120dp"
+      android:src="@drawable/logo"
+      android:contentDescription="Imagem do Bolo"
+      android:layout_marginBottom="16dp"
+      android:scaleType="centerCrop" />
+
+  <!-- Nome do Bolo -->
+  <TextView
+      android:id="@+id/textViewNomeBolo"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Nome do Bolo"
+      android:textSize="24sp"
+      android:textStyle="bold"
+      android:textColor="#333333"
+      android:layout_marginBottom="8dp"
+      android:layout_weight="0"/>
+
+  <!-- Descrição do Bolo -->
+  <TextView
+      android:id="@+id/textViewDescricaoBolo"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Descrição do bolo aqui. Pode ser um texto explicando os ingredientes ou os sabores."
+      android:textSize="16sp"
+      android:textColor="#555555"
+      android:layout_marginBottom="16dp"
+      android:maxLines="3"
+      android:ellipsize="end"
+      android:layout_weight="0"/>
+
+  <!-- Preço do Bolo -->
+  <TextView
+      android:id="@+id/textViewPrecoBolo"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_weight="1"
+      android:text="R$ 25,00"
+      android:textColor="#E91E63"
+      android:textSize="20sp"
+      android:textStyle="bold" />
+</LinearLayout>

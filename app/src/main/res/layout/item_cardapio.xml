@@ -23,11 +23,11 @@ android:paddingEnd="16dp"
 android:fontFamily="sans-serif-medium" />
 
 <ImageButton
-android:id="@+id/btnExcluir"
+android:id="@+id/btnVisualizar"
 android:src="@drawable/baseline_remove_red_eye_24"
 android:layout_width="wrap_content"
 android:layout_height="wrap_content"
 android:contentDescription="Excluir"
 android:background="?android:attr/selectableItemBackground"
 android:padding="8dp" />
-    </LinearLayout>
+</LinearLayout>
