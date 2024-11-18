@@ -1,6 +1,7 @@
 package Controller
 
 import Model.Cardapio
+import Model.ItemDetalheCardapio
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -26,7 +27,7 @@ class BoloAdapter(private var lista: MutableList<Cardapio>) : RecyclerView.Adapt
         holder.binding.btnVisualizar.setOnClickListener {
             val context = holder.itemView.context
             val intent = Intent(context, DetalheItemCardapio::class.java)
-
+            intent.putExtra("categoria", "bolo")
             intent.putExtra( "nome", cardapioItem.nome)
             context.startActivity(intent)
         }
@@ -41,4 +42,5 @@ class BoloAdapter(private var lista: MutableList<Cardapio>) : RecyclerView.Adapt
         lista.addAll(novasTarefas)
         notifyDataSetChanged()
     }
+
 }

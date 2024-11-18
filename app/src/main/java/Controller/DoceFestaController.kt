@@ -10,4 +10,8 @@ class DoceFestaController {
     fun listarTodosOsDocesFesta(): Query {
         return db.collection("DoceFesta")
     }
+
+    fun exibirDoceFestaDetalhe(nomeBolo: String?): Query{
+        return db.collection("DetalheDoce").whereEqualTo("nome", nomeBolo)
+    }
 }

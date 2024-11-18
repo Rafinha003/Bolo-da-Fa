@@ -10,4 +10,8 @@ class BoloController {
     fun listarTodosOsBolos(): Query {
         return db.collection("Bolo")
     }
+
+    fun ExibirBoloDetalhe(nomeBolo: String?): Query {
+        return db.collection("DetalheBolo").whereEqualTo("nome", nomeBolo)
+    }
 }

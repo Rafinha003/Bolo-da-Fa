@@ -24,7 +24,7 @@ class DoceFestaAdapter(private var lista: MutableList<Cardapio>) : RecyclerView.
         holder.binding.btnVisualizar.setOnClickListener {
             val context = holder.itemView.context
             val intent = Intent(context, DetalheItemCardapio::class.java)
-
+            intent.putExtra("categoria", "doceFesta")
             intent.putExtra( "nome", cardapioItem.nome)
             context.startActivity(intent)
         }
