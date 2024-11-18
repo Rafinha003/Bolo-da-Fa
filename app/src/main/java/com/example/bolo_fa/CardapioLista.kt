@@ -41,6 +41,11 @@ class CardapioLista : AppCompatActivity() {
             startActivity(it)
         }
 
+        binding.carrinhoCompra.setOnClickListener{
+            val it = Intent(this, carrinho_compras::class.java)
+            startActivity(it)
+        }
+
         carregarTodosOsBolos()
         carregarTodosOsDocesFesta()
 

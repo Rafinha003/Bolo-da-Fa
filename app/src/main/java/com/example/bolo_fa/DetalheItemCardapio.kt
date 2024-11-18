@@ -1,8 +1,11 @@
 package com.example.bolo_fa
 
+import Controller.AuthenticationController
 import Controller.BoloAdapter
 import Controller.BoloController
+import Controller.CarrinhoCompraController
 import Controller.DoceFestaController
+import Model.CarrinhoCompra
 import Model.ItemDetalheCardapio
 import android.content.Intent
 import android.os.Bundle
@@ -20,6 +23,7 @@ class DetalheItemCardapio : AppCompatActivity() {
     private var listDoce = mutableListOf<ItemDetalheCardapio>()
     private var boloListener: ListenerRegistration? = null
     private var doceListener: ListenerRegistration? = null
+    private lateinit var controller: AuthenticationController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,10 +47,29 @@ class DetalheItemCardapio : AppCompatActivity() {
         }
 
         binding.buttonCarrinho.setOnClickListener {
-            Toast.makeText(this, "Item adicionado ao pedido com sucesso", Toast.LENGTH_SHORT).show()
-            val intent = Intent(this, ActivityCardapioListaBinding::class.java )
-            startActivity(intent)
+
+            controller = AuthenticationController()
+
+            val carrinhoItem = CarrinhoCompra().apply {
+                email = controller.usuarioAutenticado()
+                quantidade = 1
+                produto = intent.getStringExtra("nome")
+                preco =  binding.textViewPrecoBolo.text.toString()
+            }
+
+            val controllerCarinhoCompra = CarrinhoCompraController()
+
+            controllerCarinhoCompra.adicionarCarrinhoCompra(carrinhoItem){sucesso, erro ->
+                if(sucesso){
+                    Toast.makeText(this, "Item adicionado ao pedido com sucesso", Toast.LENGTH_SHORT).show()
+                    val intent = Intent(this, CardapioLista::class.java )
+                    startActivity(intent)
+                }else{
+                    Toast.makeText(this, "Erro ao adicionar o item", Toast.LENGTH_SHORT).show()
+                }
+            }
         }
+
     }
 
     private fun exibirDetalheBolo() {
