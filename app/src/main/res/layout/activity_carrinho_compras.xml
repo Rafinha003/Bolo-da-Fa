@@ -8,15 +8,27 @@
     android:background="#FFE6E6"
     android:padding="40dp">
 
+    <ImageView
+        android:id="@+id/sair"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/baseline_exit_to_app_24"
+        app:tint="#D81B60"
+        android:layout_marginEnd="16dp" />
+
     <TextView
-        android:id="@+id/textNomeUsuario"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_weight="0"
-        android:text="Nome usuario"
-        android:textColor="#333333"
+        android:text="Veja seu carrinho de compras"
         android:textSize="24sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:fontFamily="sans-serif-medium"
+        android:textColor="#D81B60"/>
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/itemPedido"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 </LinearLayout>

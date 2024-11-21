@@ -1,6 +1,7 @@
 package Controller
 import Model.CarrinhoCompra
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.Query
 
 class CarrinhoCompraController {
 
@@ -15,5 +16,9 @@ class CarrinhoCompraController {
                 onResult(false, task.exception?.message)
             }
         }
+    }
+
+    fun listarPorEmailUsuario(email: String?): Query{
+        return db.collection("CarrinhoCompras").whereEqualTo("email", email)
     }
 }
