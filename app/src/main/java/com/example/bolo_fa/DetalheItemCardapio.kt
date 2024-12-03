@@ -70,6 +70,7 @@ class DetalheItemCardapio : AppCompatActivity() {
             }
         }
 
+        carregarImagem()
     }
 
     private fun exibirDetalheBolo() {
@@ -112,11 +113,48 @@ class DetalheItemCardapio : AppCompatActivity() {
 
                     binding.textViewDescricaoBolo.text = document.getString("descricao")
                     binding.textViewPrecoBolo.text = document.getString("preco")
+
                 }
             }
 
         }
     }
+
+    private fun carregarImagem() {
+        val nome = intent.getStringExtra("nome")
+
+        if(nome == "Bolo de cenoura"){
+            binding.imageViewBolo.setImageResource(R.drawable.bolo_de_cenoura)
+        }else if(nome == "Bolo piscina confete"){
+            binding.imageViewBolo.setImageResource(R.drawable.bolo_piscina_confete)
+        }else if(nome == "Bolo piscina chocolate"){
+            binding.imageViewBolo.setImageResource(R.drawable.bolo_piscina_simples)
+        }
+        else if(nome == "Bolo de chocolate"){
+            binding.imageViewBolo.setImageResource(R.drawable.bolo_chocolate)
+        }
+        else if(nome == "Bolo de paçoca"){
+            binding.imageViewBolo.setImageResource(R.drawable.bolo_pacoca)
+        }
+        else if(nome == "Brigadeiro"){
+            binding.imageViewBolo.setImageResource(R.drawable.brigadeiro)
+        }
+        else if(nome == "Pipoca doce"){
+            binding.imageViewBolo.setImageResource(R.drawable.pipoca_doce)
+        }
+        else if(nome == "Bolo de pote"){
+            binding.imageViewBolo.setImageResource(R.drawable.bolo_pote)
+        }
+        else if(nome == "Bolo piscina mista"){
+            binding.imageViewBolo.setImageResource(R.drawable.bolo_piscina_mista)
+        }
+        else{
+            binding.imageViewBolo.setImageResource(R.drawable.logo)
+        }
+
+
+    }
+
 
 
     override fun onDestroy() {
